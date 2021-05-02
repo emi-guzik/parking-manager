@@ -1,0 +1,291 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+$regular-weight: 400;
+$medium-weight: 500;
+
+$white: #ffffff;
+$black: #000000;
+$light-green: #34d399;
+$light-red: #f87171;
+$light-gray: #e5e7eb;
+$medium-gray: #d1d5db;
+$dark-gray: #1f2937;
+$blue: #2563eb;
+$dark-blue: #1d4ed8;
+
+$card-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Inter", Futura, sans-serif;
+  font-weight: $medium-weight;
+  margin: 0px;
+  background-color: #f9fafb;
+
+  .home-container {
+    margin: 50px;
+  }
+}
+
+// AppHeader
+.app-header {
+  height: 80px;
+  background-color: $dark-gray;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+
+  .app-icon {
+    color: $white;
+    font-size: 30px;
+    margin-right: 30px;
+  }
+
+  h1 {
+    font-weight: $medium-weight;
+    color: $white;
+  }
+}
+
+// AddParkingspot
+.add-parking-spot-container {
+  max-width: 400px;
+  border-radius: 6px;
+  margin: 20px;
+  padding: 30px;
+  box-shadow: $card-shadow;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .add-parking-spot-title {
+    font-size: 16px;
+    font-weight: $medium-weight;
+    margin-bottom: 30px;
+  }
+
+  label {
+    margin-bottom: 10px;
+  }
+
+  select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    z-index: 1;
+    outline: none;
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+
+  .select {
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-width: 150px;
+    max-width: 20px;
+    border: 1px solid gray;
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    line-height: 1.1;
+    z-index: 1;
+    margin-bottom: 20px;
+
+    &:not(.select--multiple)::after {
+      content: "";
+      justify-self: end;
+      width: 0.8em;
+      height: 0.5em;
+      background-color: gray;
+      position: absolute;
+      right: 15px;
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    }
+  }
+
+  .form-footer {
+    display: flex;
+    align-items: center;
+
+    .form-success-message {
+      color: $light-green;
+      margin-left: 40px;
+    }
+  }
+}
+
+// ParkingFloors
+.parking-floors {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .parking-floors-info {
+    margin-left: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .parking-floors-availability {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h2 {
+      font-size: 27px;
+      margin-top: 0px;
+    }
+  }
+
+  .spot-keys {
+    margin-top: 20px;
+    .key-row {
+      display: flex;
+      margin-bottom: 10px;
+
+      .key-square {
+        height: 20px;
+        width: 20px;
+        border-radius: 5px;
+        margin-right: 10px;
+
+        &-available {
+          background-color: $light-green;
+        }
+
+        &-occupied {
+          background-color: $light-red;
+        }
+      }
+    }
+  }
+}
+
+// ParkingFloor
+.parking-floor {
+  box-shadow: $card-shadow;
+  border-radius: 6px;
+  margin: 20px;
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h2 {
+    margin-top: 0px;
+  }
+
+  .spots-row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: start;
+    margin-top: 30px;
+  }
+}
+
+// ParkingSpot
+.parking-spot {
+  height: 140px;
+  width: 100px;
+  margin: 10px;
+  border-radius: 6px;
+  border-width: 6px;
+  border-style: solid;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &-available {
+    border-color: $light-green;
+  }
+
+  &-occupied {
+    border-color: $light-red;
+  }
+
+  .edit-button {
+    border-radius: 6px;
+    background-color: $light-gray;
+    padding: 5px;
+    margin: 5px;
+
+    &:hover {
+      background-color: $medium-gray;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:active {
+        color: $black;
+      }
+    }
+  }
+
+  .parking-spot-type {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+// Common
+.simple-button {
+  height: 35px;
+  background-color: $blue;
+  color: $white;
+  padding: 0px 30px;
+  border-radius: 6px;
+  border-width: 0;
+  font-weight: $medium-weight;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $dark-blue;
+  }
+}
+
+.back-button {
+  background-color: $light-gray;
+  color: #000000;
+
+  &:hover {
+    background-color: $medium-gray;
+  }
+}
+
+.back-button-container {
+  display: flex;
+  margin: 50px 20px;
+}
+
+.availability-box {
+  background-color: $medium-gray;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: $medium-weight;
+}

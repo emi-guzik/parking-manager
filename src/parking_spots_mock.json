@@ -1,0 +1,86 @@
+[
+  {
+  "id": 1,
+  "floor": 1,
+  "type": "Large",
+  "available": true 
+  },
+  {
+    "id": 2,
+    "floor": 2,
+    "type": "Compact",
+    "available": false
+  },
+  {
+    "id": 3,
+    "floor": 2,
+    "type": "Compact",
+    "available": false
+  },
+  {
+    "id": 4,
+    "floor": 1,
+    "type": "Handicapped",
+    "available": false
+  },
+  {
+    "id": 5,
+    "floor": 2,
+    "type": "Motorcycle",
+    "available": false
+  },
+  {
+    "id": 6,
+    "floor": 1,
+    "type": "Compact",
+    "available": true
+  },
+  {
+    "id": 7,
+    "floor": 1,
+    "type": "Compact",
+    "available": true
+  },
+  {
+    "id": 8,
+    "floor": 1,
+    "type": "Compact",
+    "available": true
+  },
+  {
+    "id": 9,
+    "floor": 1,
+    "type": "Compact",
+    "available": false
+  },
+  {
+    "id": 10,
+    "floor": 2,
+    "type": "Compact",
+    "available": false
+  },
+  {
+    "id": 11,
+    "floor": 1,
+    "type": "Compact",
+    "available": true
+  },
+  {
+    "id": 12,
+    "floor": 2,
+    "type": "Compact",
+    "available": true
+  },
+  {
+    "id": 13,
+    "floor": 1,
+    "type": "Large",
+    "available": false
+  },
+  {
+    "id": 14,
+    "floor": 2,
+    "type": "Compact",
+    "available": true
+  }
+]
