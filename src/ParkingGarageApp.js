@@ -1,7 +1,7 @@
 import React from 'react';
 import AddParkingSpot from './components/AddParkingSpot';
 import AppHeader from './components/AppHeader';
-import ParkingFloors from './components/ParkingFloors';
+import Garage from './components/Garage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import EditParkingSpot from './components/EditParkingSpot';
 
@@ -21,7 +21,7 @@ export default function ParkingGarageApp() {
             </Route>
 
             <Route path="/">
-              <ParkingFloors />
+              <Garage />
             </Route>
           </Switch>
         </BrowserRouter>

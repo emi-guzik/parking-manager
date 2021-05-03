@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getParkingSpotsByFloorState, getParkingSpotsState } from '../redux/selectors';
 import { Link } from 'react-router-dom';
 
-export default function ParkingFloors() {
+export default function Garage() {
   const dispatch = useDispatch();
   const parkingSpotsByFloor = useSelector(getParkingSpotsByFloorState);
   let allParkingSpots = useSelector(getParkingSpotsState);
@@ -25,10 +25,10 @@ export default function ParkingFloors() {
 
   if (parkingSpotsByFloor !== undefined && parkingSpotsByFloor !== null) {
     return (
-      <div className="parking-floors">
-        <div className="parking-floors-info">
-          <div className="parking-floors-availability">
-            <h2>Parking floors</h2>
+      <div className="garage">
+        <div className="garage-info">
+          <div className="garage-availability">
+            <h2>Garage</h2>
             <div className="availability-box">
               Spots available: {`${calculateParkingAvailability()} / ${allParkingSpots.length}`}
             </div>

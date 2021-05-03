@@ -6,11 +6,15 @@ export default function AppHeader() {
   return (
     <header>
       <div className="app-header">
-        <div className="app-icon">
+        <div className="app-logo">
+          <div className="app-icon">
           <FontAwesomeIcon icon={faCar} />
         </div>
 
         <h1>Parking garage manager</h1>
+        </div>
+        
+        <p>Hi, Admin!</p>
       </div>
     </header>
   );

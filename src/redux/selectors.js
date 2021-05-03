@@ -1,9 +1,9 @@
 export const getParkingSpotsState = (store) => store.parkingSpots.allParkingSpots;
 
 export const getParkingSpotById = (store, id) => {
-  var data = getParkingSpotsState(store);
+  var parkingSpots = getParkingSpotsState(store);
 
-  return store.parkingSpots.allParkingSpots.length > 0 ? data.filter((spot) => spot.id === id)[0] : {};
+  return parkingSpots.length > 0 ? parkingSpots.filter((spot) => spot.id === id)[0] : {};
 };
 
 export const getParkingSpotsByFloorState = (store) => store.parkingSpots.parkingSpotsByFloor;

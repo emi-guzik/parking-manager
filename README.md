@@ -2,7 +2,12 @@
 
 Admin application for parking garage management.
 
-Displays parking slots availability and allows editing and adding new parking slots.
+- displays parking slots availability
+- allows editing and adding new parking slots
+
+See the app here: https://main.d20zrmt6318d9q.amplifyapp.com
+
+![Alt text](/ParkingGarageApp.png?raw=true 'Class diagram')
 
 ## Running the project
 

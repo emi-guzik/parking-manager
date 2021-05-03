@@ -9,28 +9,32 @@ const initialState = {
 };
 
 export default function parkingSpots(state = initialState, action) {
+  function splitSpotsByFloor(parkingSpots) {
+    return parkingSpots.reduce((map, obj) => {
+      map[obj.floor] = parkingSpots.filter((spot) => spot.floor === obj.floor);
+      return map;
+    }, {});
+  }
+
   switch (action.type) {
     case LOAD_PARKING_SPOTS: {
       const parkingSpotsFromJson = parkingSpotsJsonData;
 
-      const parkingSpotsByFloor = parkingSpotsFromJson.reduce((map, obj) => {
-        map[obj.floor] = parkingSpotsFromJson.filter((spot, index) => spot.floor === obj.floor);
-        return map;
-      }, {});
-
-      let spotWithHighestId = parkingSpotsFromJson.reduce((spotWithHighestId, Spot) =>
-        spotWithHighestId.id > Spot.id ? spotWithHighestId : Spot
+      // Get spot with highest id
+      let spotWithHighestId = parkingSpotsFromJson.reduce((spotWithHighestId, spot) =>
+        spotWithHighestId.id > spot.id ? spotWithHighestId : spot
       );
 
       return {
         ...state,
         allParkingSpots: parkingSpotsFromJson,
-        parkingSpotsByFloor: parkingSpotsByFloor,
+        parkingSpotsByFloor: splitSpotsByFloor(parkingSpotsFromJson),
         highestSpotId: spotWithHighestId.id,
       };
     }
 
     case ADD_PARKING_SPOT: {
+      // Create new parking spot from payload
       const parkingSpot = {
         id: action.payload.id,
         floor: action.payload.floor,
@@ -39,10 +43,13 @@ export default function parkingSpots(state = initialState, action) {
       };
 
       const allParkingSpotsByFloors = { ...state.parkingSpotsByFloor };
-      const parkingFloor = allParkingSpotsByFloors[action.payload.floor] ?? [];
 
-      parkingFloor.push(parkingSpot);
-      allParkingSpotsByFloors[action.payload.floor] = parkingFloor;
+      // Create floor if doesn't exist
+      if (!allParkingSpotsByFloors[action.payload.floor]) {
+        allParkingSpotsByFloors[action.payload.floor] = [];
+      }
+
+      allParkingSpotsByFloors[action.payload.floor].push(parkingSpot);
 
       return {
         ...state,
@@ -61,36 +68,15 @@ export default function parkingSpots(state = initialState, action) {
       };
 
       const allParkingSpots = [...state.allParkingSpots];
+
+      // Find spot in allParkingSpots and update array
       var spotIndex = allParkingSpots.findIndex((spot) => spot.id === action.payload.id);
       allParkingSpots[spotIndex] = parkingSpot;
-
-      const allParkingSpotsByFloors = { ...state.parkingSpotsByFloor };
-
-      // Find modified spot and check on which floor it exist
-      const parkingSpotsFromState = [...state.allParkingSpots];
-      const modifiedSpot = parkingSpotsFromState[spotIndex];
-
-      if (modifiedSpot.floor !== action.payload.floor) {
-        // Remove from previous floor
-        const indexToRemove = allParkingSpotsByFloors[modifiedSpot.floor].findIndex(
-          (spot) => spot.id === action.payload.id
-        );
-        allParkingSpotsByFloors[modifiedSpot.floor].splice(indexToRemove, 1);
-
-        // Add to new floor
-        allParkingSpotsByFloors[parkingSpot.floor].push(parkingSpot);
-      } else {
-        // Update same the floor
-        const parkingFloor = allParkingSpotsByFloors[action.payload.floor] ?? [];
-        var floorSpotIndex = parkingFloor.findIndex((spot) => spot.id === action.payload.id);
-        parkingFloor[floorSpotIndex] = parkingSpot;
-        allParkingSpotsByFloors[action.payload.floor] = parkingFloor;
-      }
 
       return {
         ...state,
         allParkingSpots: allParkingSpots,
-        parkingSpotsByFloor: allParkingSpotsByFloors,
+        parkingSpotsByFloor: splitSpotsByFloor(allParkingSpots),
         highestSpotId: state.highestSpotId,
       };
     }
