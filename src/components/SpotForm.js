@@ -72,7 +72,7 @@ export default function SpotForm(props) {
             <button className="simple-button" onClick={handleSaveAction}>
               Save
             </button>
-            {successMessageVisible ? <div className="form-success-message">Spot added!</div> : <div></div>}
+            {successMessageVisible ? <div className="form-success-message">{props.successMessage}</div> : <div></div>}
           </div>
         </form>
       </div>

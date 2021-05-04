@@ -33,5 +33,13 @@ export default function AddParkingSpot() {
     });
   }
 
-  return <SpotForm title="Add parking spot" floor={floor} spotType={spotType} onSaveAction={handleAddParkingSpot} />;
+  return (
+    <SpotForm
+      title="Add parking spot"
+      floor={floor}
+      spotType={spotType}
+      onSaveAction={handleAddParkingSpot}
+      successMessage="Spot added!"
+    />
+  );
 }

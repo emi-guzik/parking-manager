@@ -46,5 +46,13 @@ export default function EditParkingSpot() {
     });
   }
 
-  return <SpotForm title="Edit parking spot" floor={floor} spotType={spotType} onSaveAction={handleEditParkingSpot} />;
+  return (
+    <SpotForm
+      title="Edit parking spot"
+      floor={floor}
+      spotType={spotType}
+      onSaveAction={handleEditParkingSpot}
+      successMessage="Spot edited!"
+    />
+  );
 }
